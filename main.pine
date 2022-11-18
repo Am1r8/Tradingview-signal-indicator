@@ -41,3 +41,15 @@ srcvwap = hlc3
 vvwap = vwap(srcvwap)
 line1 = sma(src1a, lenvwap)
 plot(vvwap, color=#e91e63, linewidth=2, style=plot.style_line, title="VWAP MIDDLE")
+
+emaSource = close
+emaPeriod = 20
+devMultiple = 2
+baseline = sma(emaSource, emaPeriod)
+plot(baseline, title = "BB Red Line", color = color.red)
+stdDeviation = devMultiple * (stdev(emaSource, emaPeriod))
+upperBand = (baseline + stdDeviation)
+lowerBand = (baseline - stdDeviation)
+p1 = plot(upperBand, title = "BB Top", color = color.blue)
+p2 = plot(lowerBand, title = "BB Bottom", color = #311b92)
+fill(p1, p2, color = color.blue)
