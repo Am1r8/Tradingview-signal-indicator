@@ -4,3 +4,30 @@ length1 = input(title="1st Length", type=input.integer, minval=1, defval=120)
 length2 = input(title="2nd Length", type=input.integer, minval=1, defval=12)
 maInput = input(title="MA Type", defval="EMA", options=["EMA", "SMA", "VWMA", "WMA"])
 src = input(title="Source", type=input.source, defval=hl2)
+
+getMA(src, length) =>
+    ma = 0.0
+
+    if maInput == "EMA"
+        ma := ema(src, length)
+
+    if maInput == "SMA"
+        ma := sma(src, length)
+
+    if maInput == "VWMA"
+        ma := vwma(src, length)
+
+    if maInput == "WMA"
+        ma := wma(src, length)
+    ma
+
+getNMA(src, length1, length2) =>
+    lambda = length1 / length2
+	alpha = lambda * (length1 - 1) / (length1 - lambda)
+
+	ma1 = getMA(src, length1)
+	ma2 = getMA(ma1, length2)
+
+	nma = (1 + alpha) * ma1 - alpha * ma2
+
+nma = getNMA(src, length1, length2)
