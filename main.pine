@@ -33,3 +33,11 @@ getNMA(src, length1, length2) =>
 nma = getNMA(src, length1, length2)
 
 plot(nma, title="NMA Black Line", linewidth=2, style=plot.style_stepline, color=color.black, transp=0)
+
+lenvwap = input(1, minval=1, title="VWAP Length")
+src1a = input(close, title="VWAP Source")
+offsetvwap = input(title="VWAP Offset", type=input.integer, defval=0, minval=-500, maxval=500)
+srcvwap = hlc3
+vvwap = vwap(srcvwap)
+line1 = sma(src1a, lenvwap)
+plot(vvwap, color=#e91e63, linewidth=2, style=plot.style_line, title="VWAP MIDDLE")
