@@ -31,3 +31,5 @@ getNMA(src, length1, length2) =>
 	nma = (1 + alpha) * ma1 - alpha * ma2
 
 nma = getNMA(src, length1, length2)
+
+plot(nma, title="NMA Black Line", linewidth=2, style=plot.style_stepline, color=color.black, transp=0)
