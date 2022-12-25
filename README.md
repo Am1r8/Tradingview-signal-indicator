@@ -25,9 +25,7 @@ study("Jojo's Indicator")
 
 4. Adjust the settings to your liking and click "Apply".
 
-## Author
-
-Jojo's Trading View Indicator was created by Alpha.
+Created By AlPHA With ❤️
 
 ## Disclaimer
 
